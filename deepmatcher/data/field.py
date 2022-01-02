@@ -32,7 +32,7 @@ class FastText(vocab.Vectors):
 
 class FastTextBinary(vocab.Vectors):
 
-    name_base = 'wiki.{}.bin'
+    name_base = 'fasttext.{}.bin.itunes_amazon'
     # changed to new embedding trained on custom corpus
     _direct_en_url = 'https://drive.google.com/uc?export=download&id=1tejo68vsn1a_xo7EI3lD-7LKp4ln9NZZ'
 
