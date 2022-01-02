@@ -59,7 +59,8 @@ class FastTextBinary(vocab.Vectors):
     def __getitem__(self, token):
         return torch.Tensor(self.model.get_word_vector(token))
 
-    def cache(self, name, cache, url=None, backup_url=None):
+    # set default URL to google drive
+    def cache(self, name, cache, url='https://drive.google.com/uc?export=download&id=1tejo68vsn1a_xo7EI3lD-7LKp4ln9NZZ', backup_url=None):
         path = os.path.join(cache, name)
         if not os.path.isfile(path) and url:
             if not os.path.exists(self.destination):
