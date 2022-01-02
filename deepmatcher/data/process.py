@@ -224,6 +224,8 @@ def process(path,
     datasets[0].tokenize = tokenize
     datasets[0].lowercase = lowercase
     datasets[0].include_lengths = include_lengths
+    
+    print("success")
 
     return datasets
 
