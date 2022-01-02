@@ -34,7 +34,7 @@ class FastTextBinary(vocab.Vectors):
 
     name_base = 'itunes_amazon.{}.bin'
     # changed to new embedding trained on custom corpus
-    _direct_en_url = 'https://drive.google.com/file/d/1KBX9kUE__IibcuQWixgd6xbvLnhLafnb/view?usp=sharing'
+    _direct_en_url = 'https://drive.google.com/uc?export=download&id=1KBX9kUE__IibcuQWixgd6xbvLnhLafnb'
 
     def __init__(self, language='en', url_base=None, cache=None):
         """
@@ -45,7 +45,7 @@ class FastTextBinary(vocab.Vectors):
         cache = os.path.expanduser(cache)
         base = url_base or 'https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.{}.zip'
         # change url to google drive url
-        url = 'https://drive.google.com/file/d/1KBX9kUE__IibcuQWixgd6xbvLnhLafnb/view?usp=sharing'
+        url = 'https://drive.google.com/uc?export=download&id=1KBX9kUE__IibcuQWixgd6xbvLnhLafnb'
         backup_url = None
         self.destination = os.path.join(cache, 'itunes_amazon.{}.zip'.format(language))
         if language == 'en' and url_base is None:
@@ -61,7 +61,7 @@ class FastTextBinary(vocab.Vectors):
         return torch.Tensor(self.model.get_word_vector(token))
 
     # set default URL to google drive
-    def cache(self, name, cache, url='https://drive.google.com/file/d/1KBX9kUE__IibcuQWixgd6xbvLnhLafnb/view?usp=sharing', backup_url=None):
+    def cache(self, name, cache, url='https://drive.google.com/uc?export=download&id=1KBX9kUE__IibcuQWixgd6xbvLnhLafnb', backup_url=None):
         path = os.path.join(cache, name)
         if not os.path.isfile(path) and url:
             if not os.path.exists(self.destination):
