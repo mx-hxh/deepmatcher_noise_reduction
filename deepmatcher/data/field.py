@@ -32,9 +32,9 @@ class FastText(vocab.Vectors):
 
 class FastTextBinary(vocab.Vectors):
 
-    name_base = 'fasttext.{}.bin.itunes_amazon'
+    name_base = 'itunes_amazon.{}.bin'
     # changed to new embedding trained on custom corpus
-    _direct_en_url = 'https://drive.google.com/uc?export=download&id=1tejo68vsn1a_xo7EI3lD-7LKp4ln9NZZ'
+    _direct_en_url = 'https://drive.google.com/file/d/1tejo68vsn1a_xo7EI3lD-7LKp4ln9NZZ/view?usp=sharing'
 
     def __init__(self, language='en', url_base=None, cache=None):
         """
@@ -44,14 +44,15 @@ class FastTextBinary(vocab.Vectors):
          """
         cache = os.path.expanduser(cache)
         base = url_base or 'https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.{}.zip'
-        url = base.format(language)
+        # change url to google drive url
+        url = 'https://drive.google.com/file/d/1tejo68vsn1a_xo7EI3lD-7LKp4ln9NZZ/view?usp=sharing'
         backup_url = None
-        self.destination = os.path.join(cache, 'wiki.{}.zip'.format(language))
+        self.destination = os.path.join(cache, 'itunes_amazon.{}.zip'.format(language))
         if language == 'en' and url_base is None:
             backup_url = url
             self.backup_destination = self.destination
             url = FastTextBinary._direct_en_url
-            self.destination = os.path.join(cache, 'wiki.en.bin')
+            self.destination = os.path.join(cache, 'itunes_amazon.en.bin')
         name = FastTextBinary.name_base.format(language)
 
         self.cache(name, cache, url=url, backup_url=backup_url)
