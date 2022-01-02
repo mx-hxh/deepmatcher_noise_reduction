@@ -52,7 +52,7 @@ class FastTextBinary(vocab.Vectors):
             backup_url = url
             self.backup_destination = self.destination
             url = FastTextBinary._direct_en_url
-            self.destination = os.path.join(cache, 'itunes_amazon.en.bin')
+            self.destination = os.path.join(cache, 'itunes_amazon.en.zip')
         name = FastTextBinary.name_base.format(language)
 
         self.cache(name, cache, url=url, backup_url=backup_url)
