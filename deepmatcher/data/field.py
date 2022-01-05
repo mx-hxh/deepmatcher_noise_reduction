@@ -32,9 +32,9 @@ class FastText(vocab.Vectors):
 
 class FastTextBinary(vocab.Vectors):
 
-    name_base = 'walmart_amazon_0.{}.bin'
+    name_base = 'itunes_amazon15.{}.bin'
     # changed to new embedding trained on custom corpus
-    _direct_en_url = 'https://drive.google.com/uc?export=download&id=1wfpkyuLhdqSnRijhQTSLUlU-XxWV6Dj9'
+    _direct_en_url = 'https://drive.google.com/uc?export=download&id=1bY8lFNmkHC-iSaKLPBRRA1ACly4Ai_0D'
 
     def __init__(self, language='en', url_base=None, cache=None):
         """
@@ -45,14 +45,14 @@ class FastTextBinary(vocab.Vectors):
         cache = os.path.expanduser(cache)
         base = url_base or 'https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.{}.zip'
         # change url to google drive url
-        url = 'https://drive.google.com/uc?export=download&id=1wfpkyuLhdqSnRijhQTSLUlU-XxWV6Dj9'
+        url = 'https://drive.google.com/uc?export=download&id=1bY8lFNmkHC-iSaKLPBRRA1ACly4Ai_0D'
         backup_url = None
-        self.destination = os.path.join(cache, 'walmart_amazon_0.{}.zip'.format(language))
+        self.destination = os.path.join(cache, 'itunes_amazon15.{}.zip'.format(language))
         if language == 'en' and url_base is None:
             backup_url = url
             self.backup_destination = self.destination
             url = FastTextBinary._direct_en_url
-            self.destination = os.path.join(cache, 'walmart_amazon_0.en.zip')
+            self.destination = os.path.join(cache, 'itunes_amazon15.en.zip')
         name = FastTextBinary.name_base.format(language)
 
         self.cache(name, cache, url=url, backup_url=backup_url)
@@ -61,7 +61,7 @@ class FastTextBinary(vocab.Vectors):
         return torch.Tensor(self.model.get_word_vector(token))
 
     # set default URL to google drive
-    def cache(self, name, cache, url='https://drive.google.com/uc?export=download&id=1wfpkyuLhdqSnRijhQTSLUlU-XxWV6Dj9', backup_url=None):
+    def cache(self, name, cache, url='https://drive.google.com/uc?export=download&id=1bY8lFNmkHC-iSaKLPBRRA1ACly4Ai_0D', backup_url=None):
         path = os.path.join(cache, name)
         if not os.path.isfile(path) and url:
             if not os.path.exists(self.destination):
